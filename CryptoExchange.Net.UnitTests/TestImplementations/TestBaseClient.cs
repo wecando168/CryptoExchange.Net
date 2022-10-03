@@ -41,6 +41,11 @@ namespace CryptoExchange.Net.UnitTests
             headers = new Dictionary<string, string>();
         }
 
+        public override void MexcV3AuthenticateRequest(RestApiClient apiClient, Uri uri, HttpMethod method, Dictionary<string, object> providedParameters, bool auth, ArrayParametersSerialization arraySerialization, HttpMethodParameterPosition parameterPosition, out Dictionary<string, object> uriParameters, out Dictionary<string, object> bodyParameters, out Dictionary<string, string> headers)
+        {
+            throw new NotImplementedException();
+        }
+
         public override string Sign(string toSign)
         {
             return toSign;

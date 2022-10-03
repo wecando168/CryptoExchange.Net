@@ -179,6 +179,11 @@ namespace CryptoExchange.Net.UnitTests.TestImplementations
             bodyParameters = parameterPosition == HttpMethodParameterPosition.InBody ? new SortedDictionary<string, object>(providedParameters) : new SortedDictionary<string, object>();
             headers = new Dictionary<string, string>();
         }
+
+        public override void MexcV3AuthenticateRequest(RestApiClient apiClient, Uri uri, HttpMethod method, Dictionary<string, object> providedParameters, bool auth, ArrayParametersSerialization arraySerialization, HttpMethodParameterPosition parameterPosition, out Dictionary<string, object> uriParameters, out Dictionary<string, object> bodyParameters, out Dictionary<string, string> headers)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public class ParseErrorTestRestClient: TestRestClient
