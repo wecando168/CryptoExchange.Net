@@ -136,7 +136,8 @@ namespace CryptoExchange.Net
             if (!request)
                 return new WebCallResult<T>(request.Error!);
 
-            return await GetResponseAsync<T>(apiClient, request.Data, deserializer, cancellationToken, false).ConfigureAwait(false);
+            var response = await GetResponseAsync<T>(apiClient, request.Data, deserializer, cancellationToken, false).ConfigureAwait(false);
+            return response;
         }
 
         /// <summary>

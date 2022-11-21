@@ -363,7 +363,7 @@ namespace CryptoExchange.Net
         {
             var dataResult = new CallResult<T>(new ServerError("No response on query received"));
             await socket.SendAndWaitAsync(request, ClientOptions.SocketResponseTimeout, data =>
-            {
+            {                
                 if (!HandleQueryResponse<T>(socket, request, data, out var callResult))
                     return false;
 
