@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CryptoExchange.Net.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -236,144 +237,122 @@ namespace CryptoExchange.Net.CommonObjects
     }
 
     /// <summary>
-    /// Order Price Type
-    /// 订单报价类型
+    /// Order Price Type/Tp Order Price Type/SL Order Price Type
+    /// 订单报价类型/止盈委托报价类型/止损委托报价类型
     /// </summary>
     public enum UmOrderPriceType
     {
         /// <summary>
         /// 限价
         /// </summary>
-        limit,
+        [Map("limit")]
+        Limit,
 
         /// <summary>
         /// 对手价
         /// </summary>
-        opponent,
+        [Map("opponent")]
+        BestOffer,
 
         /// <summary>
         /// 只做maker单
         /// post only下单只受用户持仓数量限制
         /// </summary>
-        post_only,
+        [Map("post_only")]
+        PostOnly,
 
         /// <summary>
         /// 最优5档
         /// </summary>
-        optimal_5,
+        [Map("optimal_5")]
+        Optimal5,
 
         /// <summary>
         /// 最优10档
         /// </summary>
-        optimal_10,
+        [Map("optimal_10")]
+        Optimal10,
 
         /// <summary>
         /// 最优20档
         /// </summary>
-        optimal_20,
+        [Map("optimal_20")]
+        Optimal20,
 
         /// <summary>
         /// IOC订单
         /// </summary>
-        ioc,
+        [Map("ioc")]
+        ImmediateOrCancel,
 
         /// <summary>
         /// FOK订单
         /// </summary>
-        fok,
+        [Map("fok")]
+        FillOrKill,
 
         /// <summary>
         /// 对手价-IOC下单
         /// </summary>
-        opponent_ioc,
+        [Map("opponent_ioc")]
+        ImmediateOrCancelBestBid,
 
         /// <summary>
         /// 最优5档-IOC下单
         /// </summary>
-        optimal_5_ioc,
+        [Map("optimal_5_ioc")]
+        ImmediateOrCancelOptimal5,
 
         /// <summary>
         /// 最优10档-IOC下单
         /// </summary>
-        optimal_10_ioc,
+        [Map("optimal_10_ioc")]
+        ImmediateOrCancelOptimal10,
 
         /// <summary>
         /// 最优20档-IOC下单
         /// </summary>
-        optimal_20_ioc,
+        [Map("optimal_20_ioc")]
+        ImmediateOrCancelOptimal20,
 
         /// <summary>
         /// 对手价-FOK下单
         /// </summary>
-        opponent_fok,
+        [Map("opponent_fok")]
+        FillOrKillBestBid,
 
         /// <summary>
         /// 最优5档-FOK下单
         /// </summary>
-        optimal_5_fok,
+        [Map("optimal_5_fok")]
+        FillOrKillOptimal5,
 
         /// <summary>
         /// 最优10档-FOK下单
         /// </summary>
-        optimal_10_fok,
+        [Map("optimal_10_fok")]
+        FillOrKillOptimal10,
 
         /// <summary>
         /// 最优20档-FOK下单
         /// </summary>
-        optimal_20_fok
+        [Map("optimal_20_fok")]
+        FillOrKillOptimal20
     }
 
     /// <summary>
-    /// Tp Order Price Type
-    /// 止盈委托类型
+    /// 触发类型
     /// </summary>
-    public enum UmTpOrderPriceType
+    public enum UmTriggerType
     {
         /// <summary>
-        /// 限价
+        /// ge大于等于(触发价比最新价大)
         /// </summary>
-        limit,
+        ge,
 
         /// <summary>
-        /// 最优5档
+        /// le小于(触发价比最新价小)
         /// </summary>
-        optimal_5,
-
-        /// <summary>
-        /// 最优10档
-        /// </summary>
-        optimal_10,
-
-        /// <summary>
-        /// 最优20档
-        /// </summary>
-        optimal_20
-    }
-
-    /// <summary>
-    /// SL Order Price Type
-    /// 止损委托类型
-    /// </summary>
-    public enum UmSlOrderPriceType
-    {
-        /// <summary>
-        /// 限价
-        /// </summary>
-        limit,
-
-        /// <summary>
-        /// 最优5档
-        /// </summary>
-        optimal_5,
-
-        /// <summary>
-        /// 最优10档
-        /// </summary>
-        optimal_10,
-
-        /// <summary>
-        /// 最优20档
-        /// </summary>
-        optimal_20
+        le
     }
 }
