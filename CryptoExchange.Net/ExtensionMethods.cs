@@ -545,6 +545,36 @@ namespace CryptoExchange.Net
             uriBuilder.Query = httpValueCollection.ToString();
             return uriBuilder.Uri;
         }
+
+        /// <summary>
+        /// Create a new uri with the provided parameters as query
+        /// 使用提供的参数创建一个新的 uri 作为查询（Tron Chain 参数是不做字典排序）
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <param name="baseUri"></param>
+        /// <param name="arraySerialization"></param>
+        /// <returns></returns>
+        public static Uri TronChainSetParameters(this Uri baseUri, Dictionary<string, object> parameters, ArrayParametersSerialization arraySerialization)
+        {
+            var uriBuilder = new UriBuilder();
+            uriBuilder.Scheme = baseUri.Scheme;
+            uriBuilder.Host = baseUri.Host;
+            uriBuilder.Port = baseUri.Port;
+            uriBuilder.Path = baseUri.AbsolutePath;
+            var httpValueCollection = HttpUtility.ParseQueryString(string.Empty);
+            foreach (var parameter in parameters)
+            {
+                if (parameter.Value.GetType().IsArray)
+                {
+                    foreach (var item in (object[])parameter.Value)
+                        httpValueCollection.Add(arraySerialization == ArrayParametersSerialization.Array ? parameter.Key + "[]" : parameter.Key, item.ToString());
+                }
+                else
+                    httpValueCollection.Add(parameter.Key, parameter.Value.ToString());
+            }
+            uriBuilder.Query = httpValueCollection.ToString();
+            return uriBuilder.Uri;
+        }
     }
 }
 

@@ -395,6 +395,10 @@ namespace CryptoExchange.Net
                 result.Error!.Message = "Authentication failed: " + result.Error.Message;
                 return new CallResult<bool>(result.Error);
             }
+            else
+            {
+                Console.WriteLine($"Socket {socket.SocketId} authentication success");
+            }
 
             socket.Authenticated = true;
             return new CallResult<bool>(true);

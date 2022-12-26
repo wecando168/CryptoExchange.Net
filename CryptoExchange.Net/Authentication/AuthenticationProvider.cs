@@ -238,7 +238,7 @@ namespace CryptoExchange.Net.Authentication
 
         /// <summary>
         /// Authenticate a request. Output parameters should include the providedParameters input
-        /// MexcV3 Api验证请求:输出参数应包括提供的参数输入（参数不做字典排序）
+        /// 输出参数应包括提供的参数输入（参数不做字典排序）
         /// </summary>
         /// <param name="apiClient">The Api client sending the request</param>
         /// <param name="uri">The uri for the request</param>
@@ -250,7 +250,7 @@ namespace CryptoExchange.Net.Authentication
         /// <param name="uriParameters">Parameters that need to be in the Uri of the request. Should include the provided parameters if they should go in the uri</param>
         /// <param name="bodyParameters">Parameters that need to be in the body of the request. Should include the provided parameters if they should go in the body</param>
         /// <param name="headers">The headers that should be send with the request</param>
-        public abstract void MexcV3AuthenticateRequest(
+        public abstract void AuthenticateRequest(
             RestApiClient apiClient,
             Uri uri,
             HttpMethod method,

@@ -210,7 +210,7 @@ namespace CryptoExchange.Net.UnitTests.TestImplementations
             headers = new Dictionary<string, string>();
         }
 
-        public override void MexcV3AuthenticateRequest(RestApiClient apiClient, Uri uri, HttpMethod method, Dictionary<string, object> providedParameters, bool auth, ArrayParametersSerialization arraySerialization, HttpMethodParameterPosition parameterPosition, out Dictionary<string, object> uriParameters, out Dictionary<string, object> bodyParameters, out Dictionary<string, string> headers)
+        public override void AuthenticateRequest(RestApiClient apiClient, Uri uri, HttpMethod method, Dictionary<string, object> providedParameters, bool auth, ArrayParametersSerialization arraySerialization, HttpMethodParameterPosition parameterPosition, out Dictionary<string, object> uriParameters, out Dictionary<string, object> bodyParameters, out Dictionary<string, string> headers)
         {
             throw new NotImplementedException();
         }
@@ -220,10 +220,5 @@ namespace CryptoExchange.Net.UnitTests.TestImplementations
     {
         public ParseErrorTestRestClient() { }
         public ParseErrorTestRestClient(TestClientOptions exchangeOptions) : base(exchangeOptions) { }
-
-        protected override Error ParseErrorResponse(JToken error)
-        {
-            return new ServerError((int)error["errorCode"], (string)error["errorMessage"]);
-        }
     }
 }
