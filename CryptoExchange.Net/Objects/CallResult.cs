@@ -235,6 +235,11 @@ namespace CryptoExchange.Net.Objects
     public class WebCallResult<T>: CallResult<T>
     {
         /// <summary>
+        /// next page link
+        /// </summary>
+        public string? Fingerprint { get; set; }
+
+        /// <summary>
         /// The request http method
         /// </summary>
         public HttpMethod? RequestMethod { get; set; }
@@ -282,6 +287,7 @@ namespace CryptoExchange.Net.Objects
         /// <param name="requestHeaders"></param>
         /// <param name="data"></param>
         /// <param name="error"></param>
+        /// <param name="fingerprint"></param>
         public WebCallResult(
             HttpStatusCode? code,
             IEnumerable<KeyValuePair<string, IEnumerable<string>>>? responseHeaders,
@@ -290,9 +296,11 @@ namespace CryptoExchange.Net.Objects
             string? requestUrl,
             string? requestBody,
             HttpMethod? requestMethod,
-            IEnumerable<KeyValuePair<string, IEnumerable<string>>>? requestHeaders,
-            [AllowNull] T data,
-            Error? error) : base(data, originalData, error)
+            IEnumerable<KeyValuePair<string, IEnumerable<string>>>? requestHeaders,            
+            [AllowNull] T data,            
+            Error? error,
+            string? fingerprint = null
+            ) : base(data, originalData, error)
         {
             ResponseStatusCode = code;
             ResponseHeaders = responseHeaders;
@@ -302,13 +310,15 @@ namespace CryptoExchange.Net.Objects
             RequestBody = requestBody;
             RequestHeaders = requestHeaders;
             RequestMethod = requestMethod;
+
+            Fingerprint = fingerprint;
         }
 
         /// <summary>
         /// Create a new error result
         /// </summary>
         /// <param name="error">The error</param>
-        public WebCallResult(Error? error) : this(null, null, null, null, null, null, null, null, default, error) { }
+        public WebCallResult(Error? error) : this(null, null, null, null, null, null, null, null, default, error, null) { }
 
         /// <summary>
         /// Copy the WebCallResult to a new data type
@@ -318,7 +328,7 @@ namespace CryptoExchange.Net.Objects
         /// <returns></returns>
         public new WebCallResult<K> As<K>([AllowNull] K data)
         {
-            return new WebCallResult<K>(ResponseStatusCode, ResponseHeaders, ResponseTime, OriginalData, RequestUrl, RequestBody, RequestMethod, RequestHeaders, data, Error);
+            return new WebCallResult<K>(ResponseStatusCode, ResponseHeaders, ResponseTime, OriginalData, RequestUrl, RequestBody, RequestMethod, RequestHeaders, data, Error, Fingerprint);
         }
 
         /// <summary>
@@ -347,7 +357,7 @@ namespace CryptoExchange.Net.Objects
         /// <returns></returns>
         public new WebCallResult<K> AsError<K>(Error error)
         {
-            return new WebCallResult<K>(ResponseStatusCode, ResponseHeaders, ResponseTime, OriginalData, RequestUrl, RequestBody, RequestMethod, RequestHeaders, default, error);
+            return new WebCallResult<K>(ResponseStatusCode, ResponseHeaders, ResponseTime, OriginalData, RequestUrl, RequestBody, RequestMethod, RequestHeaders, default, error, Fingerprint);
         }
     }
 }
