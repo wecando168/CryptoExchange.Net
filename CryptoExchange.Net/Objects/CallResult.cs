@@ -235,7 +235,7 @@ namespace CryptoExchange.Net.Objects
     public class WebCallResult<T>: CallResult<T>
     {
         /// <summary>
-        /// next page link
+        /// next page link fingerprint
         /// </summary>
         public string? Fingerprint { get; set; }
 
