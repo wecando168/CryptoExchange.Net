@@ -220,5 +220,6 @@ namespace CryptoExchange.Net.UnitTests.TestImplementations
     {
         public ParseErrorTestRestClient() { }
         public ParseErrorTestRestClient(TestClientOptions exchangeOptions) : base(exchangeOptions) { }
+
     }
 }
