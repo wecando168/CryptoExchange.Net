@@ -31,8 +31,8 @@ namespace ConsoleClient
             });
             FTXClient.SetDefaultOptions(new FTXClientOptions
             {
-                LogLevel = LogLevel.Trace,
-                ApiCredentials = new ApiCredentials("APIKEY", "APISECRET")
+                //LogLevel = LogLevel.Trace,
+                //ApiCredentials = new ApiCredentials("APIKEY", "APISECRET")
             });
 
             while (true)

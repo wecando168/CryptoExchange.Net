@@ -38,7 +38,7 @@
             binanceSocketClient.SpotStreams.SubscribeToTickerUpdatesAsync("ETHBTC", data => UpdateData("Binance", data.Data.LastPrice)),
             bitfinexSocketClient.SpotStreams.SubscribeToTickerUpdatesAsync("tETHBTC", data => UpdateData("Bitfinex", data.Data.LastPrice)),
             bittrexSocketClient.SpotStreams.SubscribeToTickerUpdatesAsync("ETH-BTC", data => UpdateData("Bittrex", data.Data.LastPrice)),
-            bybitSocketClient.SpotStreams.SubscribeToTickerUpdatesAsync("ETHBTC", data => UpdateData("Bybit", data.Data.LastPrice)),
+            bybitSocketClient.SpotStreamsV3.SubscribeToTickerUpdatesAsync("ETHBTC", data => UpdateData("Bybit", data.Data.LastPrice)),
             coinExSocketClient.SpotStreams.SubscribeToTickerUpdatesAsync("ETHBTC", data => UpdateData("CoinEx", data.Data.LastPrice)),
             ftxSocketClient.Streams.SubscribeToTickerUpdatesAsync("ETH/BTC", data => UpdateData("FTX", data.Data.LastPrice ?? 0)),
             huobiSocketClient.SpotStreams.SubscribeToTickerUpdatesAsync("ethbtc", data => UpdateData("Huobi", data.Data.ClosePrice ?? 0)),
