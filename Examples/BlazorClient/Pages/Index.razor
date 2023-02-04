@@ -23,7 +23,7 @@
         var binanceTask = binanceClient.SpotApi.ExchangeData.GetTickerAsync("BTCUSDT");
         var bitfinexTask = bitfinexClient.SpotApi.ExchangeData.GetTickerAsync("tBTCUSD");
         var bittrexTask = bittrexClient.SpotApi.ExchangeData.GetTickerAsync("BTC-USDT");
-        var bybitTask = bybitClient.SpotApi.ExchangeData.GetTickerAsync("BTCUSDT");
+        var bybitTask = bybitClient.SpotApiV3.ExchangeData.GetTickerAsync("BTCUSDT");
         var coinexTask = coinexClient.SpotApi.ExchangeData.GetTickerAsync("BTCUSDT");
         var ftxTask = ftxClient.TradeApi.ExchangeData.GetSymbolAsync("BTC/USD");
         var huobiTask = huobiClient.SpotApi.ExchangeData.GetTickerAsync("btcusdt");
